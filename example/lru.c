@@ -49,7 +49,14 @@ void c_lru_list_alloc( c_lru_list *list, int length, int page, int status )
 		if ( list->pos == list->left )
 		{
 			list->left = list->pos->left;
-		}else{
+			list->right = list->pos;
+		}
+		else if ( list->pos == list->right )
+		{
+		
+		}
+		else
+		{
 			list->pos->left->right	= list->pos->right;
 			list->pos->right->left	= list->pos->left;
 
@@ -58,8 +65,9 @@ void c_lru_list_alloc( c_lru_list *list, int length, int page, int status )
 
 			list->left->right	= list->pos;
 			list->right->left	= list->pos;
+
+			list->right = list->pos;
 		}
-		list->right = list->pos;
 	}else{
 		c_lru_list *node = (c_lru_list *) malloc( sizeof(c_lru_list) );
 
