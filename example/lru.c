@@ -24,7 +24,7 @@ bool c_lru_list_exist( c_lru_list *list, int page )
 {
 	bool		status	= false;
 	c_lru_list	*temp	= list->right;
-	printf( "页表项: [ " );
+	printf( "当前页表项: [ " );
 	while ( temp )
 	{
 		printf( "%d ", temp->page );
@@ -117,7 +117,7 @@ int main( void )
 	int	arr[1000]	= { 0 };
 	while ( true )
 	{
-		scanf( " %d", &block );
+		scanf( "%d", &block );
 		if ( block == -1 )
 			break;
 		arr[num++] = block;
@@ -139,14 +139,16 @@ int main( void )
 		c_lru_list_alloc( list, length, arr[idx], status );
 		if ( status )
 		{
-			printf( ",页号%d在页表中，不缺页\n", arr[idx] );
+			printf( "\n页号[%d]在页表中,不缺页\n", arr[idx] );
 		}else{
 			lose++;
-			printf( ",页号%d不在页表中，缺页\n", arr[idx] );
+			printf( "\n页号[%d]不在页表中,缺页\n", arr[idx] );
 		}
+		c_lru_list_exist( list, arr[idx] );
+		printf("\n\n");
 	}
 
-	printf( "\n\n共缺页: %d, 缺页率为: %d/%d\n\n", lose, lose, num );
+	printf( "经计算,共缺[%d]页, 缺页率为: [%d/%d]\n\n", lose, lose, num );
 
 	return(0);
 }
