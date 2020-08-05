@@ -113,14 +113,14 @@ int main( void )
 
 
 	printf( "\n\n请输入页号序列(-1结束输入): " );
-	int	block		= 0, num = 0;
+	int	page		= 0, num = 0;
 	int	arr[1000]	= { 0 };
 	while ( true )
 	{
-		scanf( "%d", &block );
-		if ( block == -1 )
+		scanf( "%d", &page );
+		if ( page == -1 )
 			break;
-		arr[num++] = block;
+		arr[num++] = page;
 	}
 
 	printf( "\n\n您输入的页号序列为: " );
@@ -148,7 +148,7 @@ int main( void )
 		printf("\n\n");
 	}
 
-	printf( "经计算,共缺[%d]页, 缺页率为: [%d/%d]\n\n", lose, lose, num );
+	printf( "经计算,共缺[%d]页,缺页率为: [%d/%d]\n\n", lose, lose, num );
 
 	return(0);
 }
